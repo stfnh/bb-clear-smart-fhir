@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import moment from 'moment';
 import MedicationTile from './MedicationTile';
 export default {
   props: {

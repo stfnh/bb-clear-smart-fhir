@@ -7,15 +7,19 @@
       <allergies :allergies="allergyIntolerance"></allergies>
       <hr />
       <medications :medications="medications"></medications>
+      <hr />
+      <conditions :conditions="conditions"></conditions>
     </div>
   </div>
 </template>
 
 <script>
-import 'bulma/css/bulma.css'
+import 'bulma/css/bulma.css';
+import 'bulma-timeline';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
 import Allergies from './components/Allergies';
+import Conditions from './components/Conditions';
 import Medications from './components/Medications';
 import PatientDemographics from './components/PatientDemographics';
 import smartClient from './smartClient';
@@ -24,6 +28,7 @@ export default {
   name: 'app',
   components: {
     Allergies,
+    Conditions,
     Medications,
     PatientDemographics,
     PulseLoader
@@ -33,6 +38,7 @@ export default {
       patient: null,
       allergyIntolerance: null,
       medications: null,
+      conditions: null,
       loading: true
     };
   },
@@ -44,6 +50,8 @@ export default {
     if (medications.status === 'success') {
       this.medications = medications.data.entry.map(m => m.resource);
     }
+    const conditions = await smart.patient.api.fetchAll({ type: 'Condition' });
+    this.conditions = conditions;
     this.loading = false;
   }
 };
