@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./fhir-client.js"></script>
+    <script>
+      FHIR.oauth2.authorize({
+          "client": {
+              "client_id": "bb-clear-smart-fhir",
+              "scope":  "patient/*.read"
+          }
+      });
+    </script>
+  </head>
+    <body>Loading...</body>
+</html>

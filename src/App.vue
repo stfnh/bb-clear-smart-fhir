@@ -1,28 +1,46 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="section">
+    <pulse-loader v-if="loading"></pulse-loader>
+    <div v-else>
+      <patient-demographics :patient="patient"></patient-demographics>
+      <hr />
+      <allergies :allergies="allergyIntolerance"></allergies>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import 'bulma/css/bulma.css'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+
+import Allergies from './components/Allergies';
+import PatientDemographics from './components/PatientDemographics';
+import smartClient from './smartClient';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Allergies,
+    PatientDemographics,
+    PulseLoader
+  },
+  data() {
+    return {
+      patient: null,
+      allergyIntolerance: null,
+      loading: true
+    };
+  },
+  async mounted() {
+    const smart = await smartClient();    
+    this.patient = await smart.patient.read();
+    this.allergyIntolerance = await smart.patient.api.fetchAll({ type: 'AllergyIntolerance'});
+    const medicationDispense = await smart.patient.api.fetchAll({ type: 'Condition' });
+    console.log(medicationDispense)
+    this.loading = false;
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
