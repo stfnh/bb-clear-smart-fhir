@@ -6,6 +6,7 @@ const getSmartClient = () => new Promise((resolve, reject) => {
       // patientId: 'smart-1213208'
       patientId: 'smart-1137192'
     });
+    
     resolve(smart);
   } else {
     /* eslint-disable-next-line */
