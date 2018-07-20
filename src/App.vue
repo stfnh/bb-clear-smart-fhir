@@ -55,7 +55,7 @@ export default {
         type: 'AllergyIntolerance'
       });
       const medications = await smart.patient.api.search({
-        type: 'MedicationRequest',
+        type: 'MedicationOrder',
         query: { patient: this.patient.id }
       });
       if (medications.status === 'success') {

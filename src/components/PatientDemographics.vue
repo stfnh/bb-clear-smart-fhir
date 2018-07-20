@@ -1,7 +1,13 @@
 <template>
   <div class="container">
     <h1 class="title">{{fullname}}</h1>
-    <h2 class="subtitle"><strong>{{firstname}}</strong> is a <strong>{{age}}</strong> year old <strong>{{patient.gender}}</strong>.</h2>
+    <h2 class="subtitle"><strong>{{firstname}}</strong> is a
+      <span v-if="patient.birthDate"><strong> {{age}}</strong> year old</span> 
+      <strong v-if="patient.maritalStatus"> {{patient.maritalStatus.text | lowerCase}}</strong> 
+      <strong v-if="patient.gender"> {{patient.gender}}</strong>
+      <span v-if="languages"> who speaks <strong>{{languages}}</strong></span>.
+    </h2>
+
     <div class="columns">
       <div v-if="patient.birthDate" class="column">
         birthdate<br />
@@ -14,11 +20,11 @@
       </div>
       <div v-if="phone" class="column">
         phone<br />
-        <strong>{{phone.value}}</strong>
+        <strong>{{phone}}</strong>
       </div>
       <div v-if="email" class="column">
         email<br />
-        <strong>{{email.value}}</strong>
+        <strong>{{email}}</strong>
       </div>
     </div>
   </div>
@@ -51,16 +57,35 @@ export default {
       );
     },
     phone() {
-      return (
-        this.patient.telecom &&
-        this.patient.telecom.find(t => t.system === 'phone')
-      );
+      if (this.patient.telecom) {
+        return this.patient.telecom
+          .filter(t => t.system === 'phone')
+          .map(p => `${p.use}: ${p.value}`)
+          .join(', ');
+      } else {
+        return null;
+      }
     },
     email() {
-      return (
-        this.patient.telecom &&
-        this.patient.telecom.find(t => t.system === 'email')
-      );
+      if (this.patient.telecom) {
+        return this.patient.telecom
+          .filter(t => t.system === 'email')
+          .map(p => `${p.use}: ${p.value}`)
+          .join(', ');
+      } else {
+        return null;
+      }
+    },
+    languages() {
+      if (this.patient.communication) {
+        return this.patient.communication.map(c => c.language.text).join(', ');
+      }
+      return null;
+    }
+  },
+  filters: {
+    lowerCase(input) {
+      return input.toLowerCase();
     }
   }
 };

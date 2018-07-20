@@ -7,15 +7,15 @@
       <div v-for="(condition, key) in sortedConditions" :key="condition.id">
 
         <header v-if="key==0" class="timeline-header">
-          <span class="tag is-medium is-primary">{{condition.onsetDateTime | getYear}}</span>
+          <span class="tag is-medium is-primary">{{condition.dateRecorded | getYear}}</span>
         </header>
 
         <header v-if="key > 0 && yearChange(key)" class="timeline-header">
-          <span class="tag is-primary">{{condition.onsetDateTime | getYear}}</span>
+          <span class="tag is-primary">{{condition.dateRecorded | getYear}}</span>
         </header>
 
         <timeline-item
-          :title="condition.onsetDateTime | formatDate"
+          :title="condition.dateRecorded | formatDate"
         >
           <p>{{condition.code.text}}</p>      
         </timeline-item>
@@ -44,8 +44,8 @@ export default {
     sortedConditions() {
       // slice: return a shallow copy before sorting, sort is in-place algorithm
       return this.conditions.slice().sort((a, b) => {
-        var dateA = new Date(a.onsetDatesortedConditoinsTime);
-        var dateB = new Date(b.onsetDateTime);
+        var dateA = new Date(a.dateRecorded);
+        var dateB = new Date(b.dateRecorded);
         return dateB - dateA;
       });
     }
@@ -55,7 +55,7 @@ export default {
       return moment(date).format('YYYY');
     },
     formatDate(date) {
-      return moment(date).format('DD-MM-YYYY');
+      return moment(date).format('YYYY-MM-DD');
     }
   },
   methods: {
@@ -63,8 +63,8 @@ export default {
       if (key === 0 || key === this.conditions.length - 1) {
         return false;
       }
-      const dateA = new Date(this.sortedConditions[key].onsetDateTime);
-      const dateB = new Date(this.sortedConditions[key - 1].onsetDateTime);
+      const dateA = new Date(this.sortedConditions[key].dateRecorded);
+      const dateB = new Date(this.sortedConditions[key - 1].dateRecorded);
       if (dateA.getFullYear() !== dateB.getFullYear()) {
         return true;
       }
