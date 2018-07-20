@@ -48,7 +48,7 @@ export default {
     this.allergyIntolerance = await smart.patient.api.fetchAll({ type: 'AllergyIntolerance'});
     const medications = await smart.patient.api.search({type: 'MedicationRequest', query: { patient: this.patient.id }});
     if (medications.status === 'success') {
-      this.medications = medications.data.entry.map(m => m.resource);
+      this.medications = medications.data && medications.data.entry && medications.data.entry.map(m => m.resource);
     }
     const conditions = await smart.patient.api.fetchAll({ type: 'Condition' });
     this.conditions = conditions;
