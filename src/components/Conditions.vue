@@ -47,7 +47,7 @@ export default {
         var dateA = new Date(a.onsetDatesortedConditoinsTime);
         var dateB = new Date(b.onsetDateTime);
         return dateB - dateA;
-      })
+      });
     }
   },
   filters: {
@@ -61,7 +61,7 @@ export default {
   methods: {
     yearChange(key) {
       if (key === 0 || key === this.conditions.length - 1) {
-        return false
+        return false;
       }
       const dateA = new Date(this.sortedConditions[key].onsetDateTime);
       const dateB = new Date(this.sortedConditions[key - 1].onsetDateTime);
@@ -74,5 +74,5 @@ export default {
   components: {
     TimelineItem
   }
-}
+};
 </script>

@@ -19,8 +19,6 @@
   </div>
 </template>
 
-
-
 <script>
 import moment from 'moment';
 
@@ -38,9 +36,5 @@ export default {
       return moment(new Date(date)).format('YYYY-MM-DD');
     }
   }
-}
+};
 </script>
-
-<style>
-
-</style>

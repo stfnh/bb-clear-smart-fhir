@@ -23,11 +23,9 @@ export default {
   components: {
     MedicationTile
   },
-  filters: {
-  }
-}
+  filters: {}
+};
 </script>
 
 <style>
-
 </style>

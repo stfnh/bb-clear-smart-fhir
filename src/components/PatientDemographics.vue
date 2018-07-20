@@ -30,30 +30,40 @@ import moment from 'moment';
 export default {
   props: {
     patient: {
-      type: Object,
+      type: Object
     }
   },
   computed: {
     fullname() {
-      return `${this.patient.name[0].given.join(' ')} ${this.patient.name[0].family}`;
+      return `${this.patient.name[0].given.join(' ')} ${
+        this.patient.name[0].family
+      }`;
     },
     firstname() {
-      return this.patient.name[0].given[0]
+      return this.patient.name[0].given[0];
     },
     age() {
       return moment().diff(this.patient.birthDate, 'years');
     },
     homeAddress() {
-      return this.patient.address && this.patient.address.find(a => a.use === 'home');
+      return (
+        this.patient.address && this.patient.address.find(a => a.use === 'home')
+      );
     },
     phone() {
-      return this.patient.telecom && this.patient.telecom.find(t => t.system === 'phone');
+      return (
+        this.patient.telecom &&
+        this.patient.telecom.find(t => t.system === 'phone')
+      );
     },
     email() {
-      return this.patient.telecom && this.patient.telecom.find(t => t.system === 'email');
+      return (
+        this.patient.telecom &&
+        this.patient.telecom.find(t => t.system === 'email')
+      );
     }
   }
-}
+};
 </script>
 
 <style>

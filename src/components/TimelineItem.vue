@@ -9,13 +9,13 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      title: {
-        type: String
-      }
+export default {
+  props: {
+    title: {
+      type: String
     }
-  };
+  }
+};
 </script>
 
 <style>

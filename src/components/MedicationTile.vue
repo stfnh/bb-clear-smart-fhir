@@ -18,9 +18,8 @@ export default {
       type: Object
     }
   }
-}
+};
 </script>
 
 <style>
-
 </style>
