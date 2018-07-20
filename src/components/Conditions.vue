@@ -15,7 +15,7 @@
         </header>
 
         <timeline-item
-          :title="condition.onsetDateTime"
+          :title="condition.onsetDateTime | formatDate"
         >
           <p>{{condition.code.text}}</p>      
         </timeline-item>
@@ -42,7 +42,8 @@ export default {
   },
   computed: {
     sortedConditions() {
-      return this.conditions.sort((a, b) => {
+      // slice: return a shallow copy before sorting, sort is in-place algorithm
+      return this.conditions.slice().sort((a, b) => {
         var dateA = new Date(a.onsetDatesortedConditoinsTime);
         var dateB = new Date(b.onsetDateTime);
         return dateB - dateA;
@@ -52,6 +53,9 @@ export default {
   filters: {
     getYear(date) {
       return moment(date).format('YYYY');
+    },
+    formatDate(date) {
+      return moment(date).format('DD-MM-YYYY');
     }
   },
   methods: {
