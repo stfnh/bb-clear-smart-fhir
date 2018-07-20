@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="section">
     <pulse-loader v-if="loading"></pulse-loader>
+    <error v-else-if="error" :error="error"></error>
     <div v-else>
       <patient-demographics :patient="patient"></patient-demographics>
       <hr />
@@ -18,11 +19,13 @@ import 'bulma/css/bulma.css';
 import 'bulma-timeline';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
+import smartClient from './smartClient';
+
 import Allergies from './components/Allergies';
 import Conditions from './components/Conditions';
 import Medications from './components/Medications';
 import PatientDemographics from './components/PatientDemographics';
-import smartClient from './smartClient';
+import Error from './components/Error';
 
 export default {
   name: 'app',
@@ -31,7 +34,8 @@ export default {
     Conditions,
     Medications,
     PatientDemographics,
-    PulseLoader
+    PulseLoader,
+    Error
   },
   data() {
     return {
@@ -39,28 +43,33 @@ export default {
       allergyIntolerance: null,
       medications: null,
       conditions: null,
-      loading: true
+      loading: true,
+      error: null
     };
   },
   async mounted() {
-    const smart = await smartClient();
-    this.patient = await smart.patient.read();
-    this.allergyIntolerance = await smart.patient.api.fetchAll({
-      type: 'AllergyIntolerance'
-    });
-    const medications = await smart.patient.api.search({
-      type: 'MedicationRequest',
-      query: { patient: this.patient.id }
-    });
-    if (medications.status === 'success') {
-      this.medications =
-        medications.data &&
-        medications.data.entry &&
-        medications.data.entry.map(m => m.resource);
+    try {
+      const smart = await smartClient();
+      this.patient = await smart.patient.read();
+      this.allergyIntolerance = await smart.patient.api.fetchAll({
+        type: 'AllergyIntolerance'
+      });
+      const medications = await smart.patient.api.search({
+        type: 'MedicationRequest',
+        query: { patient: this.patient.id }
+      });
+      if (medications.status === 'success') {
+        this.medications =
+          medications.data &&
+          medications.data.entry &&
+          medications.data.entry.map(m => m.resource);
+      }
+      this.conditions = await smart.patient.api.fetchAll({ type: 'Condition' });
+      this.loading = false;
+    } catch (resp) {
+      this.loading = false;
+      this.error = resp.error;
     }
-    const conditions = await smart.patient.api.fetchAll({ type: 'Condition' });
-    this.conditions = conditions;
-    this.loading = false;
   }
 };
 </script>
