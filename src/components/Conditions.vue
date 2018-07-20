@@ -17,7 +17,7 @@
         <timeline-item
           :title="condition.onsetDateTime"
         >
-          <p>{{condition.code.text}} {{key}}</p>      
+          <p>{{condition.code.text}}</p>      
         </timeline-item>
         
         <header v-if="key==sortedConditions.length - 1" class="timeline-header">
