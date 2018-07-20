@@ -10,16 +10,20 @@
           <span class="tag is-medium is-primary">{{condition.onsetDateTime | getYear}}</span>
         </header>
 
-        
-        <!-- <header v-if="key > 0 && yearChange(condition.onsetDateTime, sortedConditions[index-1].onsetDateTime)" class="timeline-header">
+        <header v-if="key > 0 && yearChange(key)" class="timeline-header">
           <span class="tag is-primary">{{condition.onsetDateTime | getYear}}</span>
-        </header> -->
+        </header>
 
         <timeline-item
           :title="condition.onsetDateTime"
         >
           <p>{{condition.code.text}} {{key}}</p>      
         </timeline-item>
+        
+        <header v-if="key==sortedConditions.length - 1" class="timeline-header">
+          <span class="tag is-medium is-primary">First record</span>
+        </header>
+
       </div>
     </div>
   </div>
@@ -28,8 +32,8 @@
 
 <script>
 import moment from 'moment';
-
 import TimelineItem from './TimelineItem';
+
 export default {
   props: {
     conditions: {
@@ -39,7 +43,7 @@ export default {
   computed: {
     sortedConditions() {
       return this.conditions.sort((a, b) => {
-        var dateA = new Date(a.onsetDateTime);
+        var dateA = new Date(a.onsetDatesortedConditoinsTime);
         var dateB = new Date(b.onsetDateTime);
         return dateB - dateA;
       })
@@ -51,8 +55,13 @@ export default {
     }
   },
   methods: {
-    yearChange(a, b) {
-      if (new Date(a).getFullYear() !== new Date(b).getFullYear()) {
+    yearChange(key) {
+      if (key === 0 || key === this.conditions.length - 1) {
+        return false
+      }
+      const dateA = new Date(this.sortedConditions[key].onsetDateTime);
+      const dateB = new Date(this.sortedConditions[key - 1].onsetDateTime);
+      if (dateA.getFullYear() !== dateB.getFullYear()) {
         return true;
       }
       return false;
@@ -63,7 +72,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
