@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="./fhir-client.js"></script>
-    <script>
-      FHIR.oauth2.authorize({
-          "client": {
-            "client_id": "145d954d-9d57-4370-8798-bae212c4cdd9", // cerner sandbox client id
-            "scope":  "patient/*.read"
-          }
-      });
-    </script>
-  </head>
-    <body>Loading...</body>
+
+<head>
+  <script src="./fhir-client.js"></script>
+  <script>
+    FHIR.oauth2.authorize({
+      "client": {
+        "client_id": "145d954d-9d57-4370-8798-bae212c4cdd9", // cerner sandbox client id
+        "scope": "patient/Patient.read patient/AllergyIntolerance.read patient/MedicationOrder.read patient/Condition.read launch online_access openid profile"
+      }
+    });
+  </script>
+</head>
+
+<body>Loading...</body>
+
 </html>
