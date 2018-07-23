@@ -68,7 +68,7 @@ export default {
       this.loading = false;
     } catch (resp) {
       this.loading = false;
-      this.error = resp.error;
+      this.error = resp.error || resp;
     }
   }
 };

@@ -60,7 +60,12 @@ export default {
       if (this.patient.telecom) {
         return this.patient.telecom
           .filter(t => t.system === 'phone')
-          .map(p => `${p.use}: ${p.value}`)
+          .map(p => {
+            if (p.use) {
+              return `${p.use}: ${p.value}`;
+            }
+            return p.value;
+          })
           .join(', ');
       } else {
         return null;
@@ -70,7 +75,12 @@ export default {
       if (this.patient.telecom) {
         return this.patient.telecom
           .filter(t => t.system === 'email')
-          .map(p => `${p.use}: ${p.value}`)
+          .map(p => {
+            if (p.use) {
+              return `${p.use}: ${p.value}`;
+            }
+            return p.value;
+          })
           .join(', ');
       } else {
         return null;
