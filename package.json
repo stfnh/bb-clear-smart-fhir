@@ -5,8 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "bulma": "^0.7.1",
@@ -16,18 +16,19 @@
     "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.5",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.5",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-rc.5",
-    "@vue/cli-service": "^3.0.0-rc.5",
+    "@vue/cli-plugin-babel": "~4.5.10",
+    "@vue/cli-plugin-eslint": "~4.5.10",
+    "@vue/cli-plugin-unit-jest": "~4.5.10",
+    "@vue/cli-service": "~4.5.10",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^23.0.1",
-    "eslint": "5.1.0",
+    "eslint": "^6.7.2",
     "eslint-config-prettier": "2.9.0",
     "eslint-loader": "2.1.0",
     "eslint-plugin-prettier": "2.6.2",
-    "eslint-plugin-vue": "4.7.0",
+    "eslint-plugin-vue": "^6.2.2",
     "prettier": "1.13.7",
     "vue-template-compiler": "^2.5.16"
   },
