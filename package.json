@@ -9,8 +9,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "bulma": "^0.7.1",
-    "bulma-timeline": "^3.0.0",
+    "bulma": "^0.9.1",
+    "bulma-timeline": "3.0.1",
     "moment": "^2.22.2",
     "vue": "^2.5.16",
     "vue-spinner": "^1.0.3"
