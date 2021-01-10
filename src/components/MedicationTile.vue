@@ -3,8 +3,8 @@
     <div class="tile">
       <article class="tile notification is-warning">
         <div class="content">
-          <p class="title">{{medication.medicationCodeableConcept.text}}</p>
-          <p class="subtitle">{{medication.status}}</p>
+          <p class="title">{{ medication.medicationCodeableConcept.text }}</p>
+          <p class="subtitle">{{ medication.status }}</p>
         </div>
       </article>
     </div>
@@ -21,5 +21,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

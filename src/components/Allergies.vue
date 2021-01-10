@@ -6,7 +6,7 @@
         v-for="allergy in allergies"
         :key="allergy.id"
         :allergy="allergy"
-      >        
+      >
       </allergy-tile>
     </div>
   </div>
@@ -27,5 +27,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

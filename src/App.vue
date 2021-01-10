@@ -62,7 +62,7 @@ export default {
         this.medications =
           medications.data &&
           medications.data.entry &&
-          medications.data.entry.map(m => m.resource);
+          medications.data.entry.map((m) => m.resource);
       }
       this.conditions = await smart.patient.api.fetchAll({ type: 'Condition' });
       this.loading = false;

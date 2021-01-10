@@ -1,34 +1,34 @@
 <template>
-
   <div class="container">
     <h1 class="title">Conditions</h1>
 
     <div class="timeline">
       <div v-for="(condition, key) in sortedConditions" :key="condition.id">
-
-        <header v-if="key==0" class="timeline-header">
-          <span class="tag is-medium is-primary">{{condition.dateRecorded | getYear}}</span>
+        <header v-if="key == 0" class="timeline-header">
+          <span class="tag is-medium is-primary">{{
+            condition.dateRecorded | getYear
+          }}</span>
         </header>
 
         <header v-if="key > 0 && yearChange(key)" class="timeline-header">
-          <span class="tag is-primary">{{condition.dateRecorded | getYear}}</span>
+          <span class="tag is-primary">{{
+            condition.dateRecorded | getYear
+          }}</span>
         </header>
 
-        <timeline-item
-          :title="condition.dateRecorded | formatDate"
-        >
-          <p>{{condition.code.text}}</p>      
+        <timeline-item :title="condition.dateRecorded | formatDate">
+          <p>{{ condition.code.text }}</p>
         </timeline-item>
-        
-        <header v-if="key==sortedConditions.length - 1" class="timeline-header">
+        <header
+          v-if="key == sortedConditions.length - 1"
+          class="timeline-header"
+        >
           <span class="tag is-medium is-primary">First record</span>
         </header>
-
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
 import moment from 'moment';

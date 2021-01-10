@@ -2,7 +2,7 @@
   <div class="timeline-item">
     <div class="timeline-marker"></div>
     <div class="timeline-content">
-      <p class="heading">{{title}}</p>
+      <p class="heading">{{ title }}</p>
       <slot></slot>
     </div>
   </div>
@@ -18,5 +18,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

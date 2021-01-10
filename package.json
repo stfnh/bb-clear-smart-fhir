@@ -29,7 +29,7 @@
     "eslint-loader": "2.1.0",
     "eslint-plugin-prettier": "2.6.2",
     "eslint-plugin-vue": "^6.2.2",
-    "prettier": "1.13.7",
+    "prettier": "^2.2.1",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {

@@ -1,7 +1,8 @@
 <template>
   <div class="notification is-danger">
-    <strong>{{error.statusText}}</strong><br />
-    <span v-if="errorDiagnostics">{{errorDiagnostics}}</span>
+    <strong>{{ error.statusText }}</strong
+    ><br />
+    <span v-if="errorDiagnostics">{{ errorDiagnostics }}</span>
   </div>
 </template>
 
@@ -15,7 +16,9 @@ export default {
   computed: {
     errorDiagnostics() {
       if (this.error.responseJSON && this.error.responseJSON.issue) {
-        return this.error.responseJSON.issue.map(i => i.diagnostics).join('; ');
+        return this.error.responseJSON.issue
+          .map((i) => i.diagnostics)
+          .join('; ');
       }
       return null;
     }
@@ -23,5 +26,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

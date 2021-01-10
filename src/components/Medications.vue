@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <h1 class="title">Medication requests</h1>
-      <div class="columns is-multiline">
-          <medication-tile
-            v-for="medication in medications"
-            :key="medication.id"
-            :medication="medication">
-          </medication-tile>        
-        </div>
-
-      </div>
+    <div class="columns is-multiline">
+      <medication-tile
+        v-for="medication in medications"
+        :key="medication.id"
+        :medication="medication"
+      >
+      </medication-tile>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -27,5 +27,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
