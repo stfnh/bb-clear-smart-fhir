@@ -1,11 +1,11 @@
 # bb-clear-smart-fhir
 SMART on FHIR implementation of the clear blue button health record reference
 
-[![Build Status](https://travis-ci.org/stfnh/bb-clear-smart-fhir.svg?branch=master)](https://travis-ci.org/stfnh/bb-clear-smart-fhir) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 A sample [SMART on FHIR](http://docs.smarthealthit.org/) app, implementing the [Blue Button Health Record Format](https://github.com/blue-button/bbClear). Work in progress.
 
-Built with [Vue.js](https://vuejs.org/), continous integration with [Travis](https://travis-ci.org/stfnh/bb-clear-smart-fhir), automated unit tests by [Jest](https://jestjs.io/). Hosted on GitHub Pages (needs to be launched from a SMART on FHIR sandbox, see below).
+Built with [Vue.js](https://vuejs.org/), continous deployment with GitHub Actions, automated unit tests by [Jest](https://jestjs.io/). Hosted on GitHub Pages (needs to be launched from a SMART on FHIR sandbox, see below).
 
 # Getting started
 
