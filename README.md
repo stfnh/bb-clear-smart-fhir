@@ -11,6 +11,8 @@ Built with [Vue.js](https://vuejs.org/), continous deployment with GitHub Action
 
 ## Run the app using SMART App Launcher
 
+- I had problems with Firefox, try using Chrome if you run into any problems.
+
 1. Go to http://launch.smarthealthit.org/
 2. Leave all settings as they are (FHIR Version R4).
 3. At the bottom of the page, set the App Launch Url to: `https://stfnh.github.io/bb-clear-smart-fhir/launch.html`
