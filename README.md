@@ -12,7 +12,7 @@ Built with [Vue.js](https://vuejs.org/), continous integration with [Travis](htt
 ## Run the app using SMART App Launcher
 
 1. Go to http://launch.smarthealthit.org/
-2. Leave all settings as they are (FHIR Version R2/DSTU2).
+2. Leave all settings as they are (FHIR Version R4).
 3. At the bottom of the page, set the App Launch Url to: `https://stfnh.github.io/bb-clear-smart-fhir/launch.html`
 4. Click `Launch App`
 5. Login as practitioner
