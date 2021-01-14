@@ -51,20 +51,28 @@ export default {
     try {
       const smart = await smartClient();
       this.patient = await smart.patient.read();
-      this.allergyIntolerance = await smart.patient.api.fetchAll({
-        type: 'AllergyIntolerance'
+
+      const query = new URLSearchParams();
+      query.set('patient', this.patient.id);
+
+      this.allergyIntolerance = await smart.request(
+        `AllergyIntolerance?${query}`,
+        {
+          pageLimit: 0,
+          flat: true
+        }
+      );
+
+      this.medications = await smart.request(`MedicationRequest?${query}`, {
+        pageLimit: 0,
+        flat: true
       });
-      const medications = await smart.patient.api.search({
-        type: 'MedicationOrder',
-        query: { patient: this.patient.id }
+
+      this.conditions = await smart.request(`Condition?${query}`, {
+        pageLimit: 0,
+        flat: true
       });
-      if (medications.status === 'success') {
-        this.medications =
-          medications.data &&
-          medications.data.entry &&
-          medications.data.entry.map((m) => m.resource);
-      }
-      this.conditions = await smart.patient.api.fetchAll({ type: 'Condition' });
+
       this.loading = false;
     } catch (resp) {
       this.loading = false;

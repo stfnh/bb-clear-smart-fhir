@@ -2,13 +2,11 @@
 <html>
 
 <head>
-  <script src="./fhir-client.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
   <script>
     FHIR.oauth2.authorize({
-      "client": {
-        "client_id": "145d954d-9d57-4370-8798-bae212c4cdd9", // cerner sandbox client id
-        "scope": "patient/Patient.read patient/AllergyIntolerance.read patient/MedicationOrder.read patient/Condition.read launch online_access openid profile"
-      }
+      "client_id": "stfnh/bb-clear-smart-fhir",
+      "scope": "patient/Patient.read patient/AllergyIntolerance.read patient/MedicationOrder.read patient/Condition.read launch online_access openid profile"
     });
   </script>
 </head>

@@ -6,17 +6,17 @@
       <div v-for="(condition, key) in sortedConditions" :key="condition.id">
         <header v-if="key == 0" class="timeline-header">
           <span class="tag is-medium is-primary">{{
-            condition.dateRecorded | getYear
+            condition.recordedDate | getYear
           }}</span>
         </header>
 
         <header v-if="key > 0 && yearChange(key)" class="timeline-header">
           <span class="tag is-primary">{{
-            condition.dateRecorded | getYear
+            condition.recordedDate | getYear
           }}</span>
         </header>
 
-        <timeline-item :title="condition.dateRecorded | formatDate">
+        <timeline-item :title="condition.recordedDate | formatDate">
           <p>{{ condition.code.text }}</p>
         </timeline-item>
         <header
@@ -44,8 +44,8 @@ export default {
     sortedConditions() {
       // slice: return a shallow copy before sorting, sort is in-place algorithm
       return this.conditions.slice().sort((a, b) => {
-        var dateA = new Date(a.dateRecorded);
-        var dateB = new Date(b.dateRecorded);
+        var dateA = new Date(a.recordedDate);
+        var dateB = new Date(b.recordedDate);
         return dateB - dateA;
       });
     }
@@ -63,8 +63,8 @@ export default {
       if (key === 0 || key === this.conditions.length - 1) {
         return false;
       }
-      const dateA = new Date(this.sortedConditions[key].dateRecorded);
-      const dateB = new Date(this.sortedConditions[key - 1].dateRecorded);
+      const dateA = new Date(this.sortedConditions[key].recordedDate);
+      const dateB = new Date(this.sortedConditions[key - 1].recordedDate);
       if (dateA.getFullYear() !== dateB.getFullYear()) {
         return true;
       }

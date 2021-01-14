@@ -8,19 +8,16 @@
 
 <script>
 export default {
-  props: {
-    error: {
-      type: Object
-    }
-  },
+  props: ['error'],
   computed: {
     errorDiagnostics() {
       if (this.error.responseJSON && this.error.responseJSON.issue) {
         return this.error.responseJSON.issue
           .map((i) => i.diagnostics)
           .join('; ');
+      } else {
+        return this.error.toString();
       }
-      return null;
     }
   }
 };

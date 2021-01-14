@@ -3,13 +3,12 @@
     <div class="tile">
       <article class="tile notification is-danger">
         <div class="content">
-          <p class="title">{{ allergy.substance.text | upperCase }}</p>
-          <p class="subtitle">{{ allergy.clinicalStatus }}</p>
+          <p class="title">{{ allergy.code.text }}</p>
+          <p class="subtitle">{{ allergy.clinicalStatus.coding[0].code }}</p>
           <div class="content">
             <ul>
-              <li v-if="allergy.category">{{ allergy.category }}</li>
+              <li v-if="allergy.category">{{ allergy.category.join(', ') }}</li>
               <li>{{ allergy.recordedDate | formatDate }}</li>
-              <li>{{ allergy.status }}</li>
               <li v-if="allergy.criticality">{{ allergy.criticality }}</li>
             </ul>
           </div>

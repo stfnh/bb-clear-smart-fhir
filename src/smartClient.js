@@ -4,14 +4,11 @@ const getSmartClient = () =>
       /* eslint-disable-next-line */
     const smart = FHIR.client({
 
-        // === Cerner sandbox ===
-        // serviceUrl:
-        //   'https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca',
-        // patientId: '1316024'
-
         // === SMART on FHIR sandbox ===
-        serviceUrl: 'https://r2.smarthealthit.org',
-        patientId: 'smart-1137192'
+        serverUrl: 'https://r4.smarthealthit.org',
+        tokenResponse: {
+          patient: '17ff80a3-dda8-4a58-a8c5-6fe94ad0d747'
+        }
       });
 
       resolve(smart);
